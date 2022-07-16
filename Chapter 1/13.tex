@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+\noindent
+First, we need to prove that
+${Fib}(n) = \dfrac{\phi^n-\psi^n}{\sqrt{5}}$
+\\
+Base case:
+\begin{align}
+  {Fib}(0) & = \dfrac{\phi^0-\psi^0}{\sqrt{5}} \\
+           & = \dfrac{0}{\sqrt{5}} = 0
+\end{align}
+
+\begin{align}
+  {Fib}(1) & = \dfrac{\phi^1-\psi^1}{\sqrt{5}} \\
+           & = \dfrac{\dfrac{1}{2}\left(1+\sqrt{5} - 1 + \sqrt{5}\right)}{\sqrt{5}} = 1
+\end{align}
+Assuming ${n} = {k}$ such that ${Fib}(0), {Fib}(1), ..., {Fib}(k) = \dfrac{\phi^k-\psi^k}{\sqrt{5}}$
+true when $k\geq1$, we want to show that ${n} = {k + 1}$ such that
+\\
+${Fib}(0), {Fib}(1), ..., {Fib}(k + 1) = \dfrac{\phi^{k+1}-\psi^{k+1}}{\sqrt{5}}$
+is also true when $k\geq1$.
+\\
+\begin{align}
+  {Fib}(k + 1) & = \dfrac{\phi^{k+1}-\psi^{k+1}}{\sqrt{5}} \\
+  {Fib}(k + 1) & = {Fib}(k) + {Fib}(k - 1) = \dfrac{\phi^k-\psi^k + \phi^{k-1} - \psi^{k-1}}{\sqrt{5}} \\
+               & = \dfrac{\phi^{k-1}(\phi + 1) - \psi^{k-1}(\psi + 1)}{\sqrt{5}} \\
+               & = \dfrac{\phi^{k-1}(\dfrac{1 + \sqrt{5} + 2}{2}) - \psi^{k-1}(\dfrac{1 - \sqrt{5} + 2}{2})}{\sqrt{5}} \\
+               & = \dfrac{\phi^{k-1}(\dfrac{6 + 2\sqrt{5}}{4}) - \psi^{k-1}(\dfrac{6 - 2\sqrt{5}}{4})}{\sqrt{5}} \\
+               & = \dfrac{\phi^{k-1}(\phi^2) - \psi^{k-1}(\psi^2)}{\sqrt{5}} \\
+               & = \dfrac{\phi^{k+1} - \psi^{k+1}}{\sqrt{5}}
+\end{align}
+So the statement is proven true.
+\\
+Finally, we are going to prove that $Fib(n)$ is the closest integer to $\dfrac{\phi^n}{\sqrt{5}}$.
+\\
+Notice that since $|\psi| < 1$ and $\sqrt{5} > 2$, one has $\left|\dfrac{\psi^n}{\sqrt{5}}\right| < \dfrac{1}{2}$
+\\
+Thus the integer closest to ${Fib}(n) + \dfrac{\psi^n}{\sqrt{5}} = \dfrac{\phi^n}{\sqrt{5}}$ is ${Fib}(n)$.
+
+\end{document}
