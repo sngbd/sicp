@@ -18,14 +18,21 @@
 ;; steps (as a function of a) used by the process generated
 ;; by the sine procedure when (sine a) is evaluated?
 
-a. 
+;; a. 
 (sine 12.15)
-(sine (p (sine 4.05)))
-(sine (p (p (sine 1.35))))
-(sine (p (p (p (sine 0.45)))))
-(sine (p (p (p (p (sine 0.15))))))
-(sine (p (p (p (p (p (sine 0.05)))))))
-(sine (p (p (p (p (p 0.05))))))
-Procedure p is applied 5 times.
+(p (sine 4.05))
+(p (p (sine 1.35)))
+(p (p (p (sine 0.45))))
+(p (p (p (p (sine 0.15)))))
+(p (p (p (p (p (sine 0.05))))))
+(p (p (p (p (p 0.05)))))
+;; Procedure p is applied 5 times.
 
-b.
+;; b. a = 1 -> 1/(3^3)
+;; a = 3 -> 3/(3^4)
+;; a = 9 -> 9/(3^5)
+;; a is divided by 3 in each step until it reaches the base case,
+;; so the number of steps taken is log3(a) + 3.
+;; Number of steps: O(log3(n) + 3) = O(log n)
+;; Order of growth in space = O(log n)
+
